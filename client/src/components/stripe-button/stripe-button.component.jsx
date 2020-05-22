@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey = 'pk_test_b7a3hFL5nC3qlBCZ6bQACpez00gyMMP52H';
+  const publishableKey = 'pk_test_U15UjqY9Be3FKxqzsiYqFNbC00d65O07rR';
 
   const onToken = token => {
     axios({
@@ -12,8 +12,8 @@ const StripeCheckoutButton = ({ price }) => {
       method: 'post',
       data: {
         amount: priceForStripe,
-        token: token
-      }
+        token: token,
+      },
     })
       .then(response => {
         alert('succesful payment');
@@ -21,21 +21,21 @@ const StripeCheckoutButton = ({ price }) => {
       .catch(error => {
         console.log('Payment Error: ', JSON.parse(error));
         alert(
-          'There was an issue with your payment! Please make sure you use the provided credit card.'
+          'There was an issue with your payment! Please make sure you use the provided credit card.',
         );
       });
   };
 
   return (
     <StripeCheckout
-      label='Pay Now'
-      name='CRWN Clothing Ltd.'
+      label="Pay Now"
+      name="CRWN Clothing Ltd."
       billingAddress
       shippingAddress
-      image='https://sendeyo.com/up/d/f3eb2117da'
+      image="https://sendeyo.com/up/d/f3eb2117da"
       description={`Your total is $${price}`}
       amount={priceForStripe}
-      panelLabel='Pay Now'
+      panelLabel="Pay Now"
       token={onToken}
       stripeKey={publishableKey}
     />

@@ -3,13 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: 'AIzaSyCdHT-AYHXjF7wOrfAchX4PIm3cSj5tn14',
-  authDomain: 'crwn-db.firebaseapp.com',
-  databaseURL: 'https://crwn-db.firebaseio.com',
-  projectId: 'crwn-db',
-  storageBucket: 'crwn-db.appspot.com',
-  messagingSenderId: '850995411664',
-  appId: '1:850995411664:web:7ddc01d597846f65'
+  apiKey: 'AIzaSyAN0v8_UPg62HbYkzQsyC7fKy2uZOs0KfU',
+  authDomain: 'crwn-db-3a4d6.firebaseapp.com',
+  databaseURL: 'https://crwn-db-3a4d6.firebaseio.com',
+  projectId: 'crwn-db-3a4d6',
+  storageBucket: 'crwn-db-3a4d6.appspot.com',
+  messagingSenderId: '747252746254',
+  appId: '1:747252746254:web:22cb981057d8405d41545f',
 };
 
 firebase.initializeApp(config);
@@ -29,7 +29,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
-        ...additionalData
+        ...additionalData,
       });
     } catch (error) {
       console.log('error creating user', error.message);
@@ -52,10 +52,7 @@ export const getUserCartRef = async userId => {
   }
 };
 
-export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd
-) => {
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 
   const batch = firestore.batch();
@@ -75,7 +72,7 @@ export const convertCollectionsSnapshotToMap = collections => {
       routeName: encodeURI(title.toLowerCase()),
       id: doc.id,
       title,
-      items
+      items,
     };
   });
 
